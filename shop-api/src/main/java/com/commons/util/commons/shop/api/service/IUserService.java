@@ -1,7 +1,9 @@
-package api.service;
+package com.commons.util.commons.shop.api.service;
 
-import api.entity.User;
+import com.commons.util.commons.shop.api.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +14,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-01-07
  */
 public interface IUserService extends IService<User> {
+
 
 }

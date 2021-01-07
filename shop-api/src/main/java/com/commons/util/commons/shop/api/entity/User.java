@@ -1,9 +1,12 @@
-package api.entity;
+package com.commons.util.commons.shop.api.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.commons.util.commons.shop.api.entity.enums.SexEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * <p>
@@ -14,6 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2021-01-07
  */
 @ApiModel(value="User对象", description="用户表")
+@Data
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,46 +37,9 @@ public class User implements Serializable {
     @ApiModelProperty(value = "更新时间")
     private LocalDateTime update_time;
 
+    @ApiModelProperty(value = "枚举SexEnum")
+    private SexEnum sex;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public LocalDateTime getCreate_time() {
-        return create_time;
-    }
-
-    public void setCreate_time(LocalDateTime create_time) {
-        this.create_time = create_time;
-    }
-
-    public LocalDateTime getUpdate_time() {
-        return update_time;
-    }
-
-    public void setUpdate_time(LocalDateTime update_time) {
-        this.update_time = update_time;
-    }
 
     @Override
     public String toString() {
@@ -82,6 +49,7 @@ public class User implements Serializable {
         ", password=" + password +
         ", create_time=" + create_time +
         ", update_time=" + update_time +
+        ", sex=" + sex +
         "}";
     }
 }

@@ -30,12 +30,13 @@ public class R {
     public static R error(){
         return new R(1,"执行失败！");
     }
-    public static R success(String msg){
-        return new R(0,msg);
+    public static R success(Object data){
+        return new R(0,"执行成功",data);
     }
 
-    public static R error(String msg){
-        return new R(1,msg);
+
+    public static R error(Object data){
+        return new R(1,"执行失败！",data);
     }
 
     public static R success(String msg,Object data){

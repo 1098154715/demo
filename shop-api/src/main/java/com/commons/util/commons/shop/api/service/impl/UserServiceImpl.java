@@ -1,10 +1,14 @@
-package api.service.impl;
+package com.commons.util.commons.shop.api.service.impl;
 
-import api.entity.User;
-import api.mapper.UserMapper;
-import api.service.IUserService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.commons.util.commons.shop.api.entity.User;
+import com.commons.util.commons.shop.api.mapper.UserMapper;
+import com.commons.util.commons.shop.api.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +20,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+
 
 }

@@ -1,9 +1,16 @@
-package api.controller;
+package com.commons.util.commons.shop.api.controller;
 
 
+import com.commons.util.commons.base.entity.R;
+import com.commons.util.commons.shop.api.entity.User;
+import com.commons.util.commons.shop.api.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,9 +20,16 @@ import org.springframework.stereotype.Controller;
  * @author cxk
  * @since 2021-01-07
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
+    @Autowired
+    IUserService userService;
 
+    @GetMapping("getUserList")
+    public R getUserList() {
+      List<User> users= userService.list();
+      return R.success(users);
+    }
 }
 

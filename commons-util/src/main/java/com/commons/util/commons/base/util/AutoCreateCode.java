@@ -47,7 +47,7 @@ public class AutoCreateCode {
         GlobalConfig gc = new GlobalConfig();
         //D:\itGuigu
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir( "D:/itGuigu/shop-api/src/main/java/com/commons/util/commons/shop");
+        gc.setOutputDir( "D:/itGuigu/shop-api/src/main/java/");
         gc.setAuthor("cxk");
         gc.setOpen(false);
         gc.setSwagger2(true); //实体属性 Swagger2 注解
@@ -63,7 +63,7 @@ public class AutoCreateCode {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("api");
+        pc.setParent("com.commons.util.commons.shop.api");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
