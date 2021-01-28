@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ApiModel("文件上传控制器")
 @RestController
+@RequestMapping("fileUpload")
 public class FileUploadController extends BaseController {
 
     @Autowired

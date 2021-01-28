@@ -33,7 +33,7 @@ public class AuthAspect {
     ;
 
     //切入点表达式决定了用注解方式的方法切还是针对某个路径下的所有类和方法进行切，方法必须是返回void类型
-    @Pointcut("execution(* com.commons.util.commons.oos.service.controller..*.*(..))")
+    @Pointcut("execution(* com.commons.util.commons.shop.api.controller.*.*(..))")
     private void oosController() {
     }
 
@@ -41,7 +41,7 @@ public class AuthAspect {
 
 
     //定义了切面的处理逻辑。即方法上加了@PermissionCheck
-    @Around(value = "oosController()&&permissionCheckCut()",argNames = "")
+    @Around("oosController()&&permissionCheckCut()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         log.info("==========进入AOP============================");
         //1.记录日志信息
