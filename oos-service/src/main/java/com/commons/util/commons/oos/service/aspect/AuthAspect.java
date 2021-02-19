@@ -40,7 +40,7 @@ public class AuthAspect {
 
 
     //定义了切面的处理逻辑。即方法上加了@PermissionCheck
-    @Around(value = "oosController()&&permissionCheckCut()",argNames = "")
+    @Around(value = "oosController()&&permissionCheckCut()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         log.info("==========进入AOP============================");
         //1.记录日志信息

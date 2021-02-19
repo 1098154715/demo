@@ -40,17 +40,17 @@ public class FileUploadController extends BaseController {
         return R.success(url);
     }
     @GetMapping("/test")
-    @Token(value = true)
+    @Token(value = false)
     public R fileUpload(){
         String cp=PropUtils.ALI_APPKEY;
         System.out.println(cp);
-        return R.success(cp);
+        return R.success("我的nacos成功了");
     }
     @GetMapping("/getIPAddress")
     @Token
     public static R getIPAddress(HttpServletRequest request) {
         String sourceIp = null;
-
+        System.out.println("我是oos接口");
         String ipAddresses = request.getHeader("x-forwarded-for");
 
         if (ipAddresses == null || ipAddresses.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
