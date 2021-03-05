@@ -7,9 +7,12 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
+import com.baomidou.mybatisplus.generator.config.rules.FileType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -49,8 +52,10 @@ public class AutoCreateCode {
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir( "D:/itGuigu/shop-api/src/main/java/");
         gc.setAuthor("cxk");
+        gc.setDateType(DateType.ONLY_DATE);
         gc.setOpen(false);
         gc.setSwagger2(true); //实体属性 Swagger2 注解
+        gc.setFileOverride(true);
         mpg.setGlobalConfig(gc);
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
@@ -105,6 +110,20 @@ public class AutoCreateCode {
             }
         });
         */
+        cfg.setFileCreate((configBuilder, fileType, filePath) -> {
+            //如果是Entity则直接返回true表示写文件
+            if (fileType == FileType.ENTITY) {
+                return true;
+            }
+            //否则先判断文件是否存在
+            File file = new File(filePath);
+            boolean exist = file.exists();
+            if (!exist) {
+                file.getParentFile().mkdirs();
+            }
+            //文件不存在或者全局配置的fileOverride为true才写文件
+            return !exist || configBuilder.getGlobalConfig().isFileOverride();
+        });
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
 
@@ -130,11 +149,11 @@ public class AutoCreateCode {
         // 公共父类
         //strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
+       /* strategy.setSuperEntityColumns("id");*/
         strategy.setInclude("user");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
-        //mpg.setStrategy(strategy);
+        mpg.setStrategy(strategy);
         //mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
     }

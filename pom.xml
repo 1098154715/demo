@@ -23,6 +23,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring.cloud-version>2020.0.0</spring.cloud-version>
+        <dynamic-dataasource-version>3.3.1</dynamic-dataasource-version>
     </properties>
 
     <dependencies>
@@ -121,6 +122,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-loadbalancer</artifactId>
+        </dependency>
+        <!--配置多数据源-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>${dynamic-dataasource-version}</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
