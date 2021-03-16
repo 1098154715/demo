@@ -1,10 +1,8 @@
-package com.commons.util.commons.oos.service.config;
+package com.commons.util.commons.shop.api.util;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * @author cxk

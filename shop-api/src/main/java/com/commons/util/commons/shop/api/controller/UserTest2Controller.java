@@ -5,10 +5,8 @@ import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.pojo.Instance;
 import com.commons.util.commons.base.entity.R;
 import com.commons.util.commons.base.util.IpUtils;
-import com.commons.util.commons.shop.api.entity.AboutYly;
 import com.commons.util.commons.shop.api.entity.User;
 import com.commons.util.commons.shop.api.feign.OosServices;
-import com.commons.util.commons.shop.api.service.IAboutYlyService;
 import com.commons.util.commons.shop.api.service.IUserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -39,8 +37,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class UserTest2Controller {
     @Autowired
     IUserService userService;
-    @Autowired
-    IAboutYlyService iAboutYlyService;
 
     @GetMapping("getUserList")
     public R getUserList(HttpServletRequest request) {
@@ -60,9 +56,8 @@ public class UserTest2Controller {
     public List<Instance> ds( String id,String testId) throws NacosException {
 
 
-        AboutYly aboutYly =iAboutYlyService.list().get(0);
+
         User user1=userService.getTest2("1");
-        System.out.println("AboutYly："+aboutYly.getTitle());
         System.out.println("user1："+user1.getUserName());
         return null;
     }

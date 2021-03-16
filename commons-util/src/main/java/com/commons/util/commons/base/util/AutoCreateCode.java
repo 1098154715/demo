@@ -55,7 +55,7 @@ public class AutoCreateCode {
         gc.setDateType(DateType.ONLY_DATE);
         gc.setOpen(false);
         gc.setSwagger2(true); //实体属性 Swagger2 注解
-        gc.setFileOverride(true);
+        gc.setFileOverride(false);
         mpg.setGlobalConfig(gc);
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
@@ -150,7 +150,7 @@ public class AutoCreateCode {
         //strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
        /* strategy.setSuperEntityColumns("id");*/
-        strategy.setInclude("user");
+        strategy.setInclude("pensioninstitutions");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
