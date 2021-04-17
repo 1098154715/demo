@@ -93,7 +93,7 @@ public class PensionController {
 
     private Pension getgetTypeeByPension(Pension ps) {
         if(ps.getType()==null){
-            return ps;
+            return  ps;
         }
         switch (ps.getType()){
             case "民非":
