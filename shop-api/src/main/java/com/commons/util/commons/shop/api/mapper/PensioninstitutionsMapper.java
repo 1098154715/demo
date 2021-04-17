@@ -3,6 +3,8 @@ package com.commons.util.commons.shop.api.mapper;
 import com.commons.util.commons.shop.api.entity.Pensioninstitutions;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -13,4 +15,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface PensioninstitutionsMapper extends BaseMapper<Pensioninstitutions> {
 
+    List<Pensioninstitutions> listNew();
+
+    List<Pensioninstitutions> getPensionAreaIsNull();
+
+    List<Pensioninstitutions> selectBedNum();
+
+    List<Pensioninstitutions> getAdderaAndContentsAreaisNull();
 }

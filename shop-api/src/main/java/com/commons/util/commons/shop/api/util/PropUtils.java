@@ -28,6 +28,13 @@ public class PropUtils implements InitializingBean {
     @Value("${gaode.url.queryAdderssbylngLat}")
     private String gaodeUrlQueryAdderssbylngLat;
 
+    @Value("${baiduAi.AppID}")
+    private String baiduAiAppID;
+    @Value("${baiduAi.APIKey}")
+    private String baiduAiAPIKey;
+    @Value("${baiduAi.Secret}")
+    private String baiduAiSecretKey;
+
    public static  String ACCESSKEY_ID;
    public static  String ACCESSKEY_SECRET;
    public static  String ACCESSKEY_BUCKETNAME;
@@ -36,6 +43,9 @@ public class PropUtils implements InitializingBean {
     public static  String GAODE_KEY;
    public static  String GAODE_URL_QUERYADDERSS;
    public static  String GAODE_URL_QUERYADDERSSBYLNGLAT;
+   public static  String BAIDUAI_APPID;
+   public static  String BAIDUAI_APIKEY;
+   public static  String BAIDUAI_SECRETKEY;
 
 
     @Override
@@ -48,5 +58,8 @@ public class PropUtils implements InitializingBean {
         GAODE_KEY=gaodeKey;
         GAODE_URL_QUERYADDERSS=gaodeUrlQueryAdderss;
         GAODE_URL_QUERYADDERSSBYLNGLAT=gaodeUrlQueryAdderssbylngLat;
+        BAIDUAI_APPID=baiduAiAppID;
+        BAIDUAI_APIKEY=baiduAiAPIKey;
+        BAIDUAI_SECRETKEY=baiduAiSecretKey;
     }
 }

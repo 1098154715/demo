@@ -40,10 +40,12 @@ public class UserTest2Controller {
 
     @GetMapping("getUserList")
     public R getUserList(HttpServletRequest request) {
-        String realIpAddress = IpUtils.getRealIpAddress(request);
-        List<User> users= userService.list();
-        log.error(realIpAddress);
-      return R.success(users);
+      User user=new User();
+      user.setId(1);
+      user.setSex(3);
+       userService.saveOrUpdate(user);
+
+      return R.success(user);
     }
     @Autowired
     private OosServices oosServices;

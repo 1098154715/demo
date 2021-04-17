@@ -1,5 +1,7 @@
 package com.commons.util.commons.base.algorithm;
 
+import java.util.Arrays;
+
 /**
  * @author cxk
  * @date 2021/2/19 11:24
@@ -150,6 +152,14 @@ public class Demo {
        return fib(num-1)+fib(num-2);
     }
 
+    private static void test11() {
+        String str="185-258-686/12468865";
+        String abb=str.replace("-","");
+        String[] p=abb.split("/");
+        System.out.println(Arrays.toString(p));
+    }
+
+
 
     public static void main(String[] args) {
        /* for(int i=1; i<10;i++){
@@ -169,8 +179,8 @@ public class Demo {
        test5();
        test6();
        test7();*/
-        Integer eger = test8(5);
-        System.out.println(eger);
+        test11();
+
 
     }
 

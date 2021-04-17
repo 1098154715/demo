@@ -4,8 +4,11 @@ package com.commons.util.commons.shop.api.util.gaode;
 
 
 
+import com.alibaba.druid.util.StringUtils;
+import com.alibaba.fastjson.JSONObject;
 import com.commons.util.commons.base.util.HttpUtils;
 import com.commons.util.commons.base.util.JsonUtils;
+import com.commons.util.commons.shop.api.entity.utilEntity.Geocodes;
 import com.commons.util.commons.shop.api.util.PropUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,7 +35,7 @@ public class GaoDeAddressUtil {
             map.put("address",address);
             map.put("output","JSON");
             map.put("key",PropUtils.GAODE_KEY);
-            String s = HttpUtils.post(PropUtils.GAODE_URL_QUERYADDERSS, map);
+            String s = HttpUtils.post(PropUtils.GAODE_URL_QUERYADDERSS, map,0);
             Map<String,Object> map1= JsonUtils.parseObject(s,Map.class);
             resp=((List<Map>)map1.get("geocodes")).get(0);
             target=resp.get("province")+","+resp.get("city")+","+resp.get("district");
@@ -48,20 +51,27 @@ public class GaoDeAddressUtil {
      * @param address
      * @return
      */
-    public static   Map<String,Object> getResult(String address){
+    public static  Geocodes getResult(String address){
         String target=null;
-        Map<String,Object> resp= new HashMap<>();
+        if(address.length()>50){
+            address=address.substring(0,50);
+        }
+
+        if(StringUtils.isEmpty(address)){
+            return null;
+        }
+        Geocodes resp= null;
         try {
             HashMap<String,Object> map=new HashMap<>();
             map.put("address",address);
             map.put("output","JSON");
             map.put("key", PropUtils.GAODE_KEY);
-            String s = HttpUtils.post(PropUtils.GAODE_URL_QUERYADDERSS, map);
+            String s = HttpUtils.post(PropUtils.GAODE_URL_QUERYADDERSS, map,0);
             Map<String,Object> map1= JsonUtils.parseObject(s,Map.class);
-            resp=((List<Map>)map1.get("geocodes")).get(0);
-
-
+            //resp=((List<Geocodes>)map1.get("geocodes")).get(0);
+            resp=JSONObject.parseArray(map1.get("geocodes").toString(),Geocodes.class).get(0);
         }catch (Exception e){
+            log.info("出错代码："+e.getMessage());
             log.error("地理编码查询报错");
         }
         return resp;
@@ -101,7 +111,7 @@ public class GaoDeAddressUtil {
             map.put("location",location);
             map.put("output","JSON");
             map.put("key",PropUtils.GAODE_KEY);
-            String s = HttpUtils.post(PropUtils.GAODE_URL_QUERYADDERSSBYLNGLAT, map);
+            String s = HttpUtils.post(PropUtils.GAODE_URL_QUERYADDERSSBYLNGLAT, map,0);
             Map<String,Object> map1= (Map<String, Object>) JsonUtils.parseObject(s,Map.class).get("regeocode");
             resp= (Map<String, Object>) map1.get("addressComponent");
             String province =(String) resp.get("province");
@@ -123,7 +133,7 @@ public class GaoDeAddressUtil {
             map.put("ip",ip);
             map.put("output","JSON");
             map.put("key",PropUtils.GAODE_KEY);
-            String s = HttpUtils.post("https://restapi.amap.com/v3/ip", map);
+            String s = HttpUtils.post("https://restapi.amap.com/v3/ip", map,0);
             Map<String,Object> map1= JsonUtils.parseObject(s,Map.class);
             target=map1.get("province")+","+map1.get("city");
             if(map1.get("province")=="[]"){

@@ -15,12 +15,12 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author cxk
- * @since 2021-03-17
+ * @since 2021-03-30
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="Pensioninstitutions对象", description="")
-public class Pensioninstitutions implements Serializable {
+@ApiModel(value="Test1pensioninstitutions对象", description="")
+public class Test1pensioninstitutions implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -83,7 +83,7 @@ public class Pensioninstitutions implements Serializable {
     @ApiModelProperty(value = "经纬度")
     private String addrPoint;
 
-    @ApiModelProperty(value = "概述")
+    @ApiModelProperty(value = "简介")
     private String remarks;
 
     @ApiModelProperty(value = "消防设施")
@@ -108,10 +108,10 @@ public class Pensioninstitutions implements Serializable {
     private Integer invitationtimes;
 
     @ApiModelProperty(value = "兜底保障人数")
-    private Integer minimumGuarantee;
+    private Integer minimumGuarantees;
 
-    @ApiModelProperty(value = "备用号码2")
-    private String phone2;
+    @ApiModelProperty(value = "备注")
+    private String remark;
 
 
 }

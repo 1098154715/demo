@@ -2,4 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.commons.util.commons.shop.api.mapper.PensioninstitutionsMapper">
 
+    <select id="listNew" resultType="com.commons.util.commons.shop.api.entity.Pensioninstitutions">
+        SELECT *
+FROM pensioninstitutions p WHERE p.phone like '%-%' or p.phone like '%/%'
+    </select>
+
+    <select id="getPensionAreaIsNull" resultType="com.commons.util.commons.shop.api.entity.Pensioninstitutions">
+      SELECT * FROM pensioninstitutions WHERE contact_address is null
+    </select>
+    <select id="selectBedNum" resultType="com.commons.util.commons.shop.api.entity.Pensioninstitutions">
+        SELECT * FROM pensioninstitutions WHERE  bed_num LIKE '%张%' or bed_num like '%-%'
+    </select>
+    <select id="getAdderaAndContentsAreaisNull"
+            resultType="com.commons.util.commons.shop.api.entity.Pensioninstitutions">
+SELECT  * FROM pensioninstitutions WHERE  addrArea is null
+
+    </select>
 </mapper>
